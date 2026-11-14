@@ -75,6 +75,7 @@ $lang = array_merge($lang, [
     'ACP_GITHUBPORTFOLIO_STATUS_REGULAR_PROJECTS'      => 'Projetos normais',
     'ACP_GITHUBPORTFOLIO_STATUS_DISCUSSIONS'           => 'Discussões vinculadas',
     'ACP_GITHUBPORTFOLIO_STATUS_LANGUAGES'             => 'Linguagens visíveis',
+    'ACP_GITHUBPORTFOLIO_SYNC_REPO_COUNT'              => [1 => '%d repositório', 2 => '%d repositórios'],
     'ACP_GITHUBPORTFOLIO_STATUS_LAST_SYNC'             => 'Última sincronização',
     'ACP_GITHUBPORTFOLIO_STATUS_PUBLIC_PAGE'           => 'Página pública',
     'ACP_GITHUBPORTFOLIO_STATUS_PROFILE'               => 'Perfil no GitHub',

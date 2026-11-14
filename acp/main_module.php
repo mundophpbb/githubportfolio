@@ -137,7 +137,7 @@ class main_module
             'ACP_GITHUBPORTFOLIO_REGULAR_TOTAL'            => count($regular_repos),
             'ACP_GITHUBPORTFOLIO_DISCUSSION_TOTAL'         => $discussion_total,
             'ACP_GITHUBPORTFOLIO_LANGUAGE_TOTAL'           => count($languages),
-            'ACP_GITHUBPORTFOLIO_LAST_SYNC_COUNT'          => $last_sync_count,
+            'ACP_GITHUBPORTFOLIO_LAST_SYNC_COUNT'          => $user->lang('ACP_GITHUBPORTFOLIO_SYNC_REPO_COUNT', $last_sync_count),
             'ACP_GITHUBPORTFOLIO_LAST_SYNC'                => $last_sync_timestamp ? $user->format_date($last_sync_timestamp) : '',
             'S_ACP_GITHUBPORTFOLIO_HAS_LAST_SYNC'          => $last_sync_timestamp > 0,
             'S_ACP_GITHUBPORTFOLIO_ENABLED'                => !empty($config['mundophpbb_githubportfolio_enabled']),

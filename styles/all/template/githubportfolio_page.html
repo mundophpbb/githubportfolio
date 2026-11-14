@@ -45,10 +45,10 @@
                 <div class="githubportfolio-toolbar__head">
                     <span class="githubportfolio-toolbar__label">{L_GITHUBPORTFOLIO_FILTER_BY_LANGUAGE}</span>
                 </div>
-                <div class="githubportfolio-filterbar" id="githubportfolio-language-filter" role="toolbar" aria-label="{L_GITHUBPORTFOLIO_FILTER_BY_LANGUAGE}">
-                    <button type="button" class="githubportfolio-filter-pill is-active" data-filter-language="all">{L_GITHUBPORTFOLIO_FILTER_ALL} <span>{GITHUBPORTFOLIO_REPO_TOTAL}</span></button>
+                <div class="githubportfolio-filterbar" id="githubportfolio-language-filter" role="group" aria-label="{L_GITHUBPORTFOLIO_FILTER_BY_LANGUAGE}">
+                    <button type="button" class="githubportfolio-filter-pill is-active" aria-pressed="true" data-filter-language="all">{L_GITHUBPORTFOLIO_FILTER_ALL} <span>{GITHUBPORTFOLIO_REPO_TOTAL}</span></button>
                     <!-- BEGIN language_filters -->
-                    <button type="button" class="githubportfolio-filter-pill" data-filter-language="{language_filters.KEY}">{language_filters.LABEL} <span>{language_filters.COUNT}</span></button>
+                    <button type="button" class="githubportfolio-filter-pill" aria-pressed="false" data-filter-language="{language_filters.KEY}">{language_filters.LABEL} <span>{language_filters.COUNT}</span></button>
                     <!-- END language_filters -->
                 </div>
             </div>
@@ -240,8 +240,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             buttons.forEach(function (item) {
                 item.classList.remove('is-active');
+                item.setAttribute('aria-pressed', 'false');
             });
             allButton.classList.add('is-active');
+            allButton.setAttribute('aria-pressed', 'true');
             applyFilter('all');
             allButton.focus();
         });
@@ -252,8 +254,10 @@ document.addEventListener('DOMContentLoaded', function () {
             var languageKey = button.getAttribute('data-filter-language') || 'all';
             buttons.forEach(function (item) {
                 item.classList.remove('is-active');
+                item.setAttribute('aria-pressed', 'false');
             });
             button.classList.add('is-active');
+            button.setAttribute('aria-pressed', 'true');
             applyFilter(languageKey);
         });
     });

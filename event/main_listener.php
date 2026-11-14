@@ -157,16 +157,16 @@ class main_listener implements EventSubscriberInterface
         $updated_at = !empty($repo['updated_at']) ? strtotime($repo['updated_at']) : false;
 
         return [
-            'NAME'            => $repo['name'] ?? '',
-            'URL'             => $repo['html_url'] ?? '',
-            'DESCRIPTION'     => $repo['description'] ?? '',
-            'LANGUAGE'        => $repo['language'] ?? '',
+            'NAME'            => htmlspecialchars((string) ($repo['name'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+            'URL'             => htmlspecialchars((string) ($repo['html_url'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+            'DESCRIPTION'     => htmlspecialchars((string) ($repo['description'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+            'LANGUAGE'        => htmlspecialchars((string) ($repo['language'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
             'LANGUAGE_CLASS'  => $this->build_language_class((string) ($repo['language'] ?? '')),
             'STARS'           => (int) ($repo['stargazers_count'] ?? 0),
             'UPDATED_AT'      => $updated_at ? $this->user->format_date($updated_at) : '',
             'IS_FORK'         => !empty($repo['fork']),
             'IS_ARCHIVED'     => !empty($repo['archived']),
-            'DISCUSSION_URL'  => $repo['discussion_url'] ?? '',
+            'DISCUSSION_URL'  => htmlspecialchars((string) ($repo['discussion_url'] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
             'HAS_DISCUSSION'  => !empty($repo['discussion_url']),
             'IS_FEATURED'     => !empty($repo['featured']),
         ];

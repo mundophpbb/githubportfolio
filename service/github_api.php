@@ -137,16 +137,25 @@ class github_api
             $headers[] = 'Authorization: Bearer ' . $token;
         }
 
-        $response = $this->http_get($url, $headers);
-        if ($response === null)
+        $decoded = [];
+        for ($page = 1; ; $page++)
         {
-            return [];
-        }
+            $response = $this->http_get($url . '&page=' . $page, $headers);
+            $batch = $response === null ? null : json_decode($response, true);
+            if (!is_array($batch) || !array_is_list($batch))
+            {
+                return [];
+            }
 
-        $decoded = json_decode($response, true);
-        if (!is_array($decoded))
-        {
-            return [];
+            foreach ($batch as $repository)
+            {
+                $decoded[] = $repository;
+            }
+
+            if (count($batch) < 100)
+            {
+                break;
+            }
         }
 
         $repos = [];
